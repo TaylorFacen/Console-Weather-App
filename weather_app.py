@@ -1,6 +1,10 @@
+from dotenv import load_dotenv
+import os
 import requests
 
-DARK_SKY_API_KEY = "my-super-secret-api-key"
+load_dotenv()
+
+DARK_SKY_API_KEY = os.environ['DARK_SKY_API_KEY']
 
 def get_weather(latitude, longitude):
     url = "https://api.darksky.net/forecast/{}/{},{}".format(DARK_SKY_API_KEY, latitude, longitude)
@@ -12,7 +16,7 @@ def get_weather(latitude, longitude):
     summary = current_weather['summary'].lower()
     temperature = current_weather['temperature']
 
-    message = "Currently, it's {} degrees outside. There's also {}".format(temperature, summary)
+    message = "Currently, it's {} degrees outside. There's also {}.".format(temperature, summary)
     print(message)
 
 
