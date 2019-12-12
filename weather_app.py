@@ -1,10 +1,6 @@
-from dotenv import load_dotenv
-import os
 import requests
 
-load_dotenv()
-
-DARK_SKY_API_KEY = os.environ['DARK_SKY_API_KEY']
+from config import DARK_SKY_API_KEY
 
 def get_weather(latitude, longitude):
     url = "https://api.darksky.net/forecast/{}/{},{}".format(DARK_SKY_API_KEY, latitude, longitude)
